@@ -21,8 +21,28 @@ div.frame {
   display:inline;
 }
 
+div.form {
+  display: inline-block;
+  width: 106px;
+  height: 181px;
+  text-align: center;
+  vertical-align: top;
+  background-color: #222222;
+}
+
+div.pageNum {
+  margin-bottom: 42px;
+  color: white;
+}
+
 b.emphasis {
   color: darkmagenta;
   font-size: 44px;
   font-family: Arial;
+}
+
+input {
+  font-size: 35px;
+  margin-bottom: 35px;
+  margin-top: -24px;
 }
