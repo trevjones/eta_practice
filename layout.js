@@ -19,24 +19,26 @@ class Layout extends React.Component {
         super(props);
         this.state = {
             page: 1, //pages start on 1
+            prevInput: null,
             prevBtn: prevButton,
             nextBtn: nextButton
         };
         this.pageJump = this.pageJump.bind(this);
+        this.checkInput = this.checkInput.bind(this);
     }
 
     /**************Handles BUTTON events*********
      n = true -> previous button
      n = false -> next button
     *********************************************/
-    onHover(n) {
-        if (n)
+    onHover(turn) {
+        if (turn)
             this.setState({prevBtn: prevButtonH})
         else
             this.setState({nextBtn: nextButtonH})
         }
-    onLeave(n) {
-        if (n)
+    onLeave(turn) {
+        if (turn)
             this.setState({prevBtn: prevButton})
         else
             this.setState({nextBtn: nextButton})
@@ -51,9 +53,16 @@ class Layout extends React.Component {
         this.setState({page: parseInt(this.refs.jump.value)});
     }
 
-    //Handle input field for page jump
-    checkInput() {
-        alert("poo");
+    /*****************Handle input field for page jump*************************
+      creates max length for input of 4
+      sets input to previous input if max exceeded/non digit
+      sets previous input to current if valid
+    ****NOTE****: still permits undesired units inbetween digits after click**/
+    checkInput(pageJumpNum) {
+        const checkNum = this.refs.jump.value;
+        if (checkNum.length > 4 || !(/[0-9]$/.test(checkNum)) && checkNum != '')
+            this.refs.jump.value = this.prevInput;
+        this.prevInput = this.refs.jump.value;
     }
 
     render() {
@@ -75,7 +84,7 @@ class Layout extends React.Component {
                         <div class="frame">
                             <div class="form">
                                 <img src={frame_edgeTop} />
-                                <input ref ="jump" type="number" onChange={this.checkInput} font-size="36pt" name="pageJumpNum" />
+                                <input ref ="jump" type="text" pattern="[0-9]*" onChange={this.checkInput} font-size="36pt" name="pageJumpNum" />
                                 <img src={frame_edgeBot}  />
                             </div>
                         </div>
