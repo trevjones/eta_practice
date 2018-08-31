@@ -47,6 +47,10 @@ input {
     margin-top: -24px;
 }
 
+img.button {
+    cursor: pointer;
+}
+
 b.oj {
     color: tomato;
 }

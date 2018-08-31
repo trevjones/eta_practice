@@ -13,13 +13,15 @@ import nextButtonH from './img/next_button_hover.jpg';
 import tFrameRight from './img/tFrame_Rcorner.jpg';
 import frame_edgeBot from './img/frame_edge_bot.jpg';
 import frame_edgeTop from './img/frame_edge_top.jpg'
+import make_submission from './img/make_submission.jpg';
+import submit_btn from './img/submit_btn.jpg';
 
 class Layout extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             page: 1, //pages start on 1
-            prevInput: null,
+            prevInput: 0,
             prevBtn: prevButton,
             nextBtn: nextButton
         };
@@ -28,8 +30,8 @@ class Layout extends React.Component {
     }
 
     /**************Handles BUTTON events*********
-     n = true -> previous button
-     n = false -> next button
+     turn == true -> previous button
+     turn == false -> next button
     *********************************************/
     onHover(turn) {
         if (turn)
@@ -57,7 +59,8 @@ class Layout extends React.Component {
       creates max length for input of 4
       sets input to previous input if max exceeded/non digit
       sets previous input to current if valid
-    ****NOTE****: still permits undesired units inbetween digits after click**/
+      TO FIX****: still permits undesired units inbetween digits after click
+      ALSO: undefined when first input is non [0-9]***************************/
     checkInput(pageJumpNum) {
         const checkNum = this.refs.jump.value;
         if (checkNum.length > 4 || !(/[0-9]$/.test(checkNum)) && checkNum != '')
@@ -78,7 +81,7 @@ class Layout extends React.Component {
                     <p class="intro"><a href="https://metamask.io/"><b className="oj">METAMASK</b></a> PLUGIN IS REQUIRED TO INTERACT WITH THE DAPP AND SUBMIT AN ENTRY. A FEE OF E0.001, AS WELL
                         AS GAS, WILL BE REQUIRED IN ORDER TO DISCOURAGE SPAM AND ABUSE.
                     </p>
-
+                    <div class="layout" align="center"><img class="button" src={make_submission} /></div><br />
                     <div class="frame">
                         <img src={jumpTo} height={"181px"}/>
                         <div class="frame">
@@ -88,7 +91,7 @@ class Layout extends React.Component {
                                 <img src={frame_edgeBot}  />
                             </div>
                         </div>
-                        <img src={goButton} height={"181px"}
+                        <img class="button" src={goButton} height={"181px"}
                              onMouseUp={this.pageJump}/>
                         <img src={this.state.prevBtn} height={"181px"}
                              onMouseOver={(e) => this.onHover(true, e)}
