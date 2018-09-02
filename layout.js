@@ -68,6 +68,10 @@ class Layout extends React.Component {
         this.prevInput = this.refs.jump.value;
     }
 
+    submitMsg() {
+        ;
+    }
+
     render() {
         return (
             <div>
@@ -110,7 +114,17 @@ class Layout extends React.Component {
                              onMouseUp={(e) => this.pageTurn(1, e)}/>
                         <img src={tFrameRight} height={"181px"} />
                     </div>
+                    <div class="frame">
                     <img src={bFrame} width={"100%"}/>
+                        <br /><br /><b>Submission number: #</b>
+                        <br /><b>Your Address: </b>
+                        <form>
+                            <textarea ref="submission" name="inputSubmission" />
+                        </form>
+                    </div>
+                </div>
+                <div class="layout" align="center">
+                    <img class="button" src={submit_btn} height={"42px"} onMouseUp={this.submitMsg}/>
                 </div>
             </div>
         );
