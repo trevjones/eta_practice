@@ -1,5 +1,6 @@
-import React from 'react';
-import "./layout.css";
+import React from 'react'
+import "./layout.css"
+import { animateScroll as scroll } from 'react-scroll'
 
 //Image imports
 import banner from './img/eta_banner_v2.svg';
@@ -85,7 +86,7 @@ class Layout extends React.Component {
                     <p class="intro"><a href="https://metamask.io/"><b className="oj">METAMASK</b></a> PLUGIN IS REQUIRED TO INTERACT WITH THE DAPP AND SUBMIT AN ENTRY. A FEE OF E0.001, AS WELL
                         AS GAS, WILL BE REQUIRED IN ORDER TO DISCOURAGE SPAM AND ABUSE.
                     </p>
-                    <div class="layout" align="center"><img class="button" src={make_submission} /></div><br />
+                    <div class="layout" align="center"><img class="button" src={make_submission} onMouseDown={() => scroll.scrollToBottom()}/></div><br />
                     <div class="frame">
                         <img src={jumpTo} height={"181px"}/>
                         <div class="frame">
